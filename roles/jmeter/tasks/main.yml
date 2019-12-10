@@ -41,6 +41,13 @@
             containers:
             - name: jmetermaster
               image: "{{jmeter_master_image}}"
+              resources:
+                requests:
+                  memory: "{{master_specs.memory_requested}}"
+                  cpu: "{{master_specs.cpu_requested}}"
+                limits:
+                  memory: "{{master_specs.memory_limit}}"
+                  cpu: "{{master_specs.cpu_limit}}"
               imagePullPolicy: IfNotPresent
               command: [ "/bin/bash", "-c", "--" ]
               args: [ "while true; do sleep 30; done;" ]
@@ -79,6 +86,13 @@
             containers:
             - name: jmslave
               image: "{{jmeter_slave_image}}"
+              resources:
+                requests:
+                  memory: "{{slave_specs.memory_requested}}"
+                  cpu: "{{slave_specs.cpu_requested}}"
+                limits:
+                  memory: "{{slave_specs.memory_limit}}"
+                  cpu: "{{slave_specs.cpu_limit}}"
               imagePullPolicy: IfNotPresent
               ports:
               - containerPort: 1099

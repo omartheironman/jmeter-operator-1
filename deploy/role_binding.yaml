@@ -5,7 +5,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: jmeter-operator
-  namespace: kube-system
+  namespace: jmeter
 roleRef:
   kind: ClusterRole
   name: jmeter-operator

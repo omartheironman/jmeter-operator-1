@@ -3,7 +3,7 @@ kind: ClusterRole
 metadata:
   creationTimestamp: null
   name: jmeter-operator
-  namespace: kube-system  
+  namespace: jmeter
 rules:
 - apiGroups:
   - ""

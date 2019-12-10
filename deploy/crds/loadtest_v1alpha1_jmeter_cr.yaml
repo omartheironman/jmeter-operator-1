@@ -6,10 +6,16 @@ metadata:
 spec:
   # Add fields here
   slave_size: 2
+  slave_limit:
+    - memory: "128Mi"
+    - cpu: "500m"
+  slave_requests:
+    - memory: "64Mi"
+    - cpu:  "100m"
   jmeter_master_image: kubernautslabs/jmeter_master:latest
   jmeter_slave_image: kubernautslabs/jmeter_slave:latest
   grafana_server_root: /
-  grafana_service_type: LoadBalancer
+  grafana_service_type: NodePort
   grafana_image: grafana/grafana:5.2.0
   influxdb_image: influxdb
   grafana_install: "true"

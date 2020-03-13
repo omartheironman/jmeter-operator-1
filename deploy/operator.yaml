@@ -17,7 +17,7 @@ spec:
       containers:
         - name: jmeter-operator
           # Replace this with the built image name
-          image: ironmanrules/jmeter-operator:2.0
+          image: ironmanrules/jmeter-operator:5.0
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE

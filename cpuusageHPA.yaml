@@ -1,0 +1,27 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cd-proxify-content-delivery
+  labels:
+    app: cd-proxify-content-delivery
+    chart: cd-proxify-content-delivery-0.1.0
+    environment: stg
+    release: cd-proxify-content-delivery
+    service: proxify-content-delivery
+    version: 0.1.0
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cd-proxify-content-delivery
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 70
+  # - type: Pods
+  #   pods:
+  #     metricName: packets-per-second
+  #     targetAverageValue: 1.5k

@@ -55,12 +55,19 @@
                 - name: loadtest
                   mountPath: /load_test
                   subPath: "load_test"
+                - name: datapool
+                  mountPath: /tmp/datapool
+                  ##subPath: "datapool.csv"
               ports:
               - containerPort: 60000
             volumes:
             - name: loadtest 
               configMap:
-               name: '{{ meta.name }}-jmeter-master-config'
+                name: '{{ meta.name }}-jmeter-master-config'
+            - name: datapool
+              configMap:
+                name: 'datapool'
+          
 
 - name: Start Jmeter Slaves        
   k8s:
@@ -96,7 +103,15 @@
               imagePullPolicy: IfNotPresent
               ports:
               - containerPort: 1099
-              - containerPort: 50000          
+              - containerPort: 50000     
+              volumeMounts:
+                - name: datapool
+                  mountPath: /tmp/datapool
+            volumes:
+            - name: datapool
+              configMap:
+                name: 'datapool'
+
 
 - name: Create Jmeter Slave Service    
   k8s:

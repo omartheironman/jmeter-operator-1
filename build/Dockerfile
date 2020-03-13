@@ -1,5 +1,5 @@
 FROM quay.io/operator-framework/ansible-operator:v0.5.0
-WORKDIR /Users/omar.moharrem/go/src/jmeter-operator-forked/jmeter-operator-1/
+#WORKDIR /Users/omar.moharrem/go/src/jmeter-operator-forked/jmeter-operator-1/
 
 
 RUN pwd
